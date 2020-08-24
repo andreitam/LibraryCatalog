@@ -17,6 +17,10 @@ public class Novel extends Book{
         this.type=type;
     }
 
+    public typeNovel getType() {
+        return this.type;
+    }
+
     @Override
     public String toString() {
         return super.toString()+" and is a novel of type "+type+".";

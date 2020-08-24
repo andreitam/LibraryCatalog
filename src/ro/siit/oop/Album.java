@@ -17,8 +17,13 @@ public class Album extends Book{
         this.paper=paper;
     }
 
+    public paperQuality getPaper() {
+        return this.paper;
+    }
+
     @Override
     public String toString() {
         return super.toString()+" and is an album of paper quality "+paper+".";
     }
 }
+

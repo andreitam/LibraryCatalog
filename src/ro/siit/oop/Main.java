@@ -1,30 +1,26 @@
 package ro.siit.oop;
-/**
- * Create a small application that mimics a library catalog.
- * It needs to be able to add books, delete books and list books.
- * Books are of two kinds: novels and art albums.
- * They both have names and number of pages.
- * Novels have type (like mystery, sf, etc.) while albums have paper quality.
- *
- * @author  Andrei Tamasanu
- * @version 1.0
- * @since   2020-08-06
- */
-public class Main {
-    public static void main(String[] args) {
-//        Book c1=new Book("carte junglei",400);
-        Novel c2=new Novel("-Crima si pedeapsa-", 1000, Novel.typeNovel.HISTORICAL);
-        Album c3=new Album("-Croatia vacanta-", 100, Album.paperQuality.GOOD);
-        Novel c4=new Novel("-Demonii-", 1400, Novel.typeNovel.ROMANCE);
-        Album c5=new Album("-Poze cu pescari-", 30, Album.paperQuality.BAD);
-        //
-        LibraryCatalog catalog=new LibraryCatalog();
-        catalog.addBooks(c4);
-        catalog.addBooks(c2);
-        catalog.addBooks(c5);
-        catalog.addBooks(c3);
-        catalog.deleteBooks(c2);
-        catalog.listBooks();
 
+public class Main
+{
+    public static void main(String[] args) throws Exception {
+        LibraryCatalog catalog=new LibraryCatalog();
+        BookFactory bf = new BookFactory();
+        catalog.addBooks(bf.createBook("Crima si pedeapsa", 1000, Novel.typeNovel.HISTORICAL));
+        catalog.addBooks(bf.createBook("Croatia vacanta", 100, Album.paperQuality.GOOD));
+        catalog.addBooks(bf.createBook("Demonii", 1400, Novel.typeNovel.ROMANCE));
+        catalog.addBooks(bf.createBook("Poze cu pescari", 30, Album.paperQuality.BAD));
+        catalog.addBooks(bf.createBook("Acolo unde cântă racii", 200, Novel.typeNovel.MYSTERY));
+        catalog.addBooks(bf.createBook("Adio, New Orleans", 30, Novel.typeNovel.ROMANCE));
+        Novel novel = new Novel("xxx", 10, Novel.typeNovel.ROMANCE);
+        catalog.addBooks(novel);
+        catalog.printBooks();
+        System.out.println(catalog.size());
+
+        catalog.deleteBooks("Demonii");
+        catalog.deleteBooks("Adio, New Orleans");
+        catalog.deleteBooks(novel);
+        catalog.printBooks();
+        System.out.println(catalog.size());
     }
 }
+

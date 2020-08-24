@@ -17,6 +17,14 @@ public abstract class Book {
         this.pages = pages;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Integer getPages() {
+        return pages;
+    }
+
     @Override
     public String toString() {
         return "This book "+this.name+" has "+this.pages+" pages" ;
